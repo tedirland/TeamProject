@@ -63,6 +63,13 @@ function updatePage(NYTData) {
     // Increase the articleCount (track article # - starting at 1)
     var articleCount = i + 1;
 console.log(articleCount)
+
+///allowing a search based on the name
+
+_embedded.events[i]._embedded.venues[i].city.name
+
+
+
     // Create the  list group to contain the articles and add the article content for each
     var $articleList = $("<ul>");
     $articleList.addClass("list-group");
