@@ -20,8 +20,18 @@
       background: #dfebed;
       font-family: 'Roboto', sans-serif;
   }
+
+  .topbuttonclass {
+      color: #f78536 !important;
+      margin-bottom: 10px;
+      float:right;
+      margin-right:30px;
+
+
+  }
   
   .container {
+      clear: both;
       align-items: center;
       display: flex;
       height: 100%;
@@ -35,16 +45,18 @@
       background: #2b4450;
       border-radius: 4px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
-      height: 501px;
+      height: 551px;
     perspective: 1000;
       transition: .9s;
       transform-style: preserve-3d;
       width: 100%;
+      
   }
   
   /* Front - Calendar */
   .front {
       transform: rotateY(0deg);
+      
   }
   
   .current-date {
@@ -80,6 +92,8 @@
       flex-direction: column;
       padding: 0 40px;
   }
+
+  
   
   .weeks div {
       display: flex;
@@ -88,11 +102,14 @@
       justify-content: space-between;
       margin-bottom: 20px;
       width: 100%;
+      border-top: 1px solid rgba(73, 114, 133, .6);
   }
   
   .last-month {
       opacity: .3;
   }
+
+
   
   .weeks span {
       padding: 10px;
