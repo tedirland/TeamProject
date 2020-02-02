@@ -19,9 +19,15 @@
   }
   
   body {
-    background-image: -webkit-radial-gradient(circle, white, black);
+    background-image: -webkit-radial-gradient(circle, white, rgb(184, 184, 184));
     animation:  duration timing-function delay iteration-count direction fill-mode;
       font-family: 'Roboto', sans-serif;
+  }
+
+  .jumbotron{
+   
+    background: repeating-linear-gradient(rgb(253, 253, 253),rgb(18, 18, 207));
+
   }
 
   .topbuttonclass {
@@ -53,7 +59,7 @@
     perspective: 1000;
       transition: .9s;
       transform-style: preserve-3d;
-      width: 100%;
+      width: 90%;
       
   }
   
