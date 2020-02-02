@@ -19,7 +19,8 @@
   }
   
   body {
-    background-image: -webkit-radial-gradient(circle, white, rgb(64, 20, 223));
+    background-image: -webkit-radial-gradient(circle, white, black);
+    animation:  duration timing-function delay iteration-count direction fill-mode;
       font-family: 'Roboto', sans-serif;
   }
 
