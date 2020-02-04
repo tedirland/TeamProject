@@ -52,7 +52,7 @@ h1 {
   }
   
   body {
-    background-image: -webkit-radial-gradient(circle, white, rgb(114, 109, 109));
+    background-image: -webkit-radial-gradient(circlergb(253, 253, 253), rgb(110, 110, 110));
     animation:  duration timing-function delay iteration-count direction fill-mode;
       font-family: 'Roboto', sans-serif;
   }
