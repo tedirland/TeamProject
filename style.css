@@ -7,6 +7,41 @@
     outline: none;
     padding: 0;
   }
+
+  Result
+EDIT ON
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+body{
+  padding: 40px;
+  background-color: #121212;  
+}
+
+h1 {
+  border-right: transparent 3px rgba(0,255,0,.75);
+  white-space: nowrap;
+  overflow: hidden;    
+  font-family: 'Source Code Pro', monospace;  
+  font-size: 28px;
+  color: rgba(255,255,255,.70);
+  position: absolute;
+  right: 10px;
+}
+
+/* Animation */
+h1 {
+  animation: animated-text 4s steps(17,end) 1s 1 normal both;
+            
+}
+
+/* text animation */
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 286px;}
+}
+
+  
   
   a {
     text-decoration: none;
@@ -17,11 +52,29 @@
   }
   
   body {
-      background: #dfebed;
+    background-image: -webkit-radial-gradient(circle, white, rgb(114, 109, 109));
+    animation:  duration timing-function delay iteration-count direction fill-mode;
       font-family: 'Roboto', sans-serif;
+  }
+
+  .jumbotron{
+   
+    background: repeating-linear-gradient(rgb(110, 110, 110),rgb(253, 253, 253));
+
+  }
+
+  .topbuttonclass {
+      color: #f78536 !important;
+      margin-bottom: 10px;
+      float:right;
+      margin-right:30px;
+      border: black gradient transparent 60% !important;
+
+
   }
   
   .container {
+      clear: both;
       align-items: center;
       display: flex;
       height: 100%;
@@ -35,16 +88,18 @@
       background: #2b4450;
       border-radius: 4px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
-      height: 501px;
+      height: 551px;
     perspective: 1000;
       transition: .9s;
       transform-style: preserve-3d;
-      width: 100%;
+      width: 90%;
+      
   }
   
   /* Front - Calendar */
   .front {
       transform: rotateY(0deg);
+      
   }
   
   .current-date {
@@ -80,6 +135,8 @@
       flex-direction: column;
       padding: 0 40px;
   }
+
+  
   
   .weeks div {
       display: flex;
@@ -88,11 +145,14 @@
       justify-content: space-between;
       margin-bottom: 20px;
       width: 100%;
+      border-top: 1px solid rgba(73, 114, 133, .6);
   }
   
   .last-month {
       opacity: .3;
   }
+
+
   
   .weeks span {
       padding: 10px;
