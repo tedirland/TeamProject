@@ -1,196 +1,166 @@
+<!--
+  Copyright 2019 Google LLC
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+       http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>Night Out</title>
-  
-  <link rel="stylesheet" href="style.css">
-  <!-- Bootstrap CSS CDN  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-
-  <!-- Font Awesome CSS Icons (For cool glyphicons) -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-
-
-  <!-- Style to fix the issue of text extending past card length -->
+  <title>Sushi Finder</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
   <style>
-    .card-body a {
-      word-break: break-all;
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 100%;
+      background-color: grey;
     }
 
-    .articleHeadline {
-      line-height: 1.5;
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
     }
+
+    /* TODO: Step 4A1: Make a generic sidebar */
   </style>
 </head>
 
 <body>
+  <!-- TODO: Step 4A2: Add a generic sidebar -->
 
-  <!-- Main Bootstrap Search -->
-  <div class="container">
+  <!-- Map appears here -->
+  <div id="map"></div>
 
-    <!-- Jumbotron for Title -->
-    <div class="jumbotron" style="background-color: #20315A ; color: white;">
-      <h1 class="text-center">
-        <strong>
-          <i class="fa fa-taxi"></i> <i class="fa fa-music"></i> Night Out</strong> <i class="fa fa-glass"></i> <i class="fa fa-cutlery"></i>
-      </h1>
-    </div>
+  <script>
+    /* Note: This example requires that you consent to location sharing when
+     * prompted by your browser. If you see the error "Geolocation permission
+     * denied.", it means you probably did not give permission for the browser * to locate you. */
+    let pos;
+    let map;
+    let bounds;
+    let infoWindow;
+    let currentInfoWindow;
+    let service;
+    let infoPane;
+    function initMap() {
+      // Initialize variables
+      bounds = new google.maps.LatLngBounds();
+      infoWindow = new google.maps.InfoWindow;
+      currentInfoWindow = infoWindow;
+      /* TODO: Step 4A3: Add a generic sidebar */
 
-    
-              <!-- Here we have our final submit button -->
-              <button type="submit" class="btn btn-default" id="run-search">
-                <i class="fa fa-search"></i> Search</button>
-              <button class="btn btn-default" id="clear-all">
-                <i class="fa fa-trash"></i> Clear Results</button>
+      // Try HTML5 geolocation
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: pos,
+            zoom: 15
+          });
+          bounds.extend(pos);
 
-            </form>
-          
-            <div class="container">
-              <div class="calendar">
-                <div class="front">
-                  <div class="current-date">
-                    <h1>Friday 15th</h1>
-                    <h1>January 2016</h1>	
-                  </div>
-        
-                  <div class="current-month">
-                    <ul class="week-days">
-                      <li>MON</li>
-                      <li>TUE</li>
-                      <li>WED</li>
-             
-             
-             </body>         <li>THU</li>
-               
-               
-               </body>       <li>FRI</li>
-                      <li>SAT</li>
-                      <li>SUN</li>
-                    </ul>
-        
-                    <div class="weeks">
-                      <div class="first">
-                        <span class="last-month">28</span>
-                        <span class="last-month">29</span>
-                        <span class="last-month">30</span>
-                        <span class="last-month">31</span>
-                        <span>01</span>
-                        <span>02</span>
-                        <span>03</span>
-                      </div>
-        
-                      <div class="second">
-                        <span>04</span>
-                        <span>05</span>
-                        <span>06</span>
-                        <span>07</span>
-                        <span>08</span>
-                        <span>09</span>
-                        <span>10</span>
-                      </div>
-        
-                      <div class="third">
-                        <span>11</span>
-                        <span>12</span>
-                        <span>13</span>
-                        <span>14</span>
-                        <span>15</span>
-                        <span>16</span>
-                        <span>17</span>
-                      </div>
-        
-                      <div class="fourth">
-                        <span>18</span>
-                        <span>19</span>
-                        <span>20</span>
-                        <span>21</span>
-                        <span>22</span>
-                        <span>23</span>
-                        <span>24</span>
-                      </div>
-        
-                      <div class="fifth">
-                        <span>25</span>
-                        <span>26</span>
-                        <span>27</span>
-                        <span>28</span>
-                        <span>29</span>
-                        <span>30</span>
-                        <span>31</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-        
-                <div class="back">
-                  <input placeholder="What's the event?">
-                  <div class="info">
-                    <div class="date">
-                      <p class="info-date">
-                      Date: <span>Jan 15th, 2016</span>
-                      </p>
-                      <p class="info-time">
-                        Time: <span>6:35 PM</span>
-                      </p>
-                    </div>
-                    <div class="address">
-                      <p>
-                        Address: <span>129 W 81st St, New York, NY</span>
-                      </p>
-                    </div>
-                    <div class="observations">
-                      <p>
-                        Observations: <span>Be there 15 minutes earlier</span>
-                      </p>
-                    </div>
-                  </div>
-        
-                  <div class="actions">
-                    <button class="save">
-                      Save <i class="ion-checkmark"></i>
-                    </button>
-                    <button class="dismiss">
-                      Dismiss <i class="ion-android-close"></i>
-                    </button>
-                  </div>
-                </div>
-        
-              </div>
-            </div>
-        
-            <script src="calendarfunction.js"></script>
-    <!-- This row will handle all of the retrieved articles -->
-    <div class="row">
-      <div class="col-sm-12">
-        <br>
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('Location found.');
+          infoWindow.open(map);
+          map.setCenter(pos);
 
-      
+          /* TODO: Step 3B2, Call the Places Nearby Search */
+          // Call Places Nearby Search on user's location
+          getNearbyPlaces(pos);
+        }, () => {
+          // Browser supports geolocation, but user has denied permission
+          handleLocationError(true, infoWindow);
+        });
+      } else {
+        // Browser doesn't support geolocation
+        handleLocationError(false, infoWindow);
+      }
+    }
 
-    <!-- Footer Region -->
-    <div class="row">
-      <div class="col-sm-12">
+    // Handle a geolocation error
+    function handleLocationError(browserHasGeolocation, infoWindow) {
+      // Set default location to Sydney, Australia
+      pos = { lat: -33.856, lng: 151.215 };
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: pos,
+        zoom: 15
+      });
 
-        <!-- Line Break followed by closing -->
-        <hr>
-        <h5 class="text-center">
-          <small>Unlock your city's true potential 
-            <i class="fa fa-unlock-alt"></i>
-          </small>
-        </h5>
+      // Display an InfoWindow at the map center
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+        'Geolocation permissions denied. Using default location.' :
+        'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+      currentInfoWindow = infoWindow;
 
-      </div>
-    </div>
+      /* TODO: Step 3B3, Call the Places Nearby Search */
+      // Call Places Nearby Search on the default location
+      getNearbyPlaces(pos);
+    }
 
-  </div>
+    /* TODO: Step 3B1, Call the Places Nearby Search */
+    // Perform a Places Nearby Search Request
+    function getNearbyPlaces(position) {
+      let request = {
+        location: position,
+        rankBy: google.maps.places.RankBy.DISTANCE,
+        keyword: 'sushi'
+      };
 
-  <!-- jQuery JS -->
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-  <!-- Code to the JavaScript File -->
-  <script src="NYTCode.js"></script>
+      service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(request, nearbyCallback);
+    }
 
+    // Handle the results (up to 20) of the Nearby Search
+    function nearbyCallback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        createMarkers(results);
+      }
+    }
+
+    /* TODO: Step 3C, Generate markers for search results */
+    // Set markers at the location of each place result
+    function createMarkers(places) {
+      places.forEach(place => {
+        let marker = new google.maps.Marker({
+          position: place.geometry.location,
+          map: map,
+          title: place.name
+        });
+
+        /* TODO: Step 4B: Add click listeners to the markers */
+
+        // Adjust the map bounds to include the location of this marker
+        bounds.extend(place.geometry.location);
+      });
+      /* Once all the markers have been placed, adjust the bounds of the map to
+       * show all the markers within the visible area. */
+      map.fitBounds(bounds);
+    }
+
+    /* TODO: Step 4C: Show place details in an info window */
+  </script>
+
+  <!-- TODO: Step 3A, Load the Places Library -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap">
+  </script>
 </body>
 
 </html>
+© 2020 GitHub, Inc.
