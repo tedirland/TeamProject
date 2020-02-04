@@ -8,6 +8,39 @@
     padding: 0;
   }
 
+  Result
+EDIT ON
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+body{
+  padding: 40px;
+  background-color: #121212;  
+}
+
+h1 {
+  border-right: transparent 3px rgba(0,255,0,.75);
+  white-space: nowrap;
+  overflow: hidden;    
+  font-family: 'Source Code Pro', monospace;  
+  font-size: 28px;
+  color: rgba(255,255,255,.70);
+  position: absolute;
+  right: 10px;
+}
+
+/* Animation */
+h1 {
+  animation: animated-text 4s steps(17,end) 1s 1 normal both;
+            
+}
+
+/* text animation */
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 286px;}
+}
+
   
   
   a {
@@ -19,14 +52,14 @@
   }
   
   body {
-    background-image: -webkit-radial-gradient(circle, white, rgb(184, 184, 184));
+    background-image: -webkit-radial-gradient(circle, white, rgb(114, 109, 109));
     animation:  duration timing-function delay iteration-count direction fill-mode;
       font-family: 'Roboto', sans-serif;
   }
 
   .jumbotron{
    
-    background: repeating-linear-gradient(rgb(253, 253, 253),rgb(18, 18, 207));
+    background: repeating-linear-gradient(rgb(110, 110, 110),rgb(253, 253, 253));
 
   }
 
