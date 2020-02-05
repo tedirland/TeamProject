@@ -37,6 +37,66 @@ var app = {
 
 app.init();
 
+ var now = moment()
+    var month = moment().format("MMMM")
+    var date = moment().format('dddd Do')
+    console.log(month)
+
+    // Month Array Using Moment
+
+    for (var i = 1; i < 12; i++) {
+
+      var increasemonthArray = [moment().format("MMMM"),
+      moment().add(1, "month").format("MMMM"),
+      moment().add(2, "month").format("MMMM"),
+      moment().add(3, "month").format("MMMM"),
+      moment().add(4, "month").format("MMMM"),
+      moment().add(5, "month").format("MMMM"),
+      moment().add(6, "month").format("MMMM"),
+      moment().add(7, "month").format("MMMM"),
+      moment().add(8, "month").format("MMMM"),
+      moment().add(9, "month").format("MMMM"),
+      moment().add(10, "month").format("MMMM"),
+      moment().add(11, "month").format("MMMM")]
+
+    }
+    var currentmonthIndex = 0;
+
+    $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
+
+    $(".addMo").on("click", function () {
+      currentmonthIndex++;
+      if (currentmonthIndex <= 11) {
+      $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
+        console.log(currentmonthIndex)
+      }
+
+    })
+
+    $(".subtractMo").on("click", function () {
+      currentmonthIndex--;
+      if (currentmonthIndex >= 0) {
+        $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
+
+      }
+    })
+
+    $(".dayofMonth").html(date)
+    console.log(increasemonthArray)
+
+    // DOM Elements
+    
+    var searchButton = $('#run-search')
+    
+    
+    $(searchButton).on("click", function () {
+      var cityInput = $("#citySearch").val()
+      
+      console.log(cityInput)
+
+
+    })
+
 
 // Ajax Calls from Ticketmaster
 

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <!-- Bootstrap CSS CDN  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css" integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg==" crossorigin="anonymous">
 
   <!-- Font Awesome CSS Icons (For cool glyphicons) -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
@@ -38,21 +39,37 @@
 
 
     <!-- Jumbotron for Title -->
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-color: #20315A ; color: white;">
       <h1 class="text-center">
         <strong>
-          <i class="fa fa-taxi"></i> <i class="fa fa-music"></i> Night Out</strong> <i class="fa fa-glass"></i> <i
-          class="fa fa-cutlery"></i>
+          <i class="fa fa-taxi"></i> <i class="fa fa-music"></i> Night Out</strong> <i class="fa fa-glass"></i> <i class="fa fa-cutlery"></i>
       </h1>
     </div>
 
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Search"></li>
+        <li><button type="button" class="button">Search</button></li>
+      </ul>
+    </div>
+
+    <footer class="social-footer">
+      <div class="social-footer-left">
+      </div>
+      <div class="social-footer-icons">
+        <ul class="menu simple">
+          <li><a href="https://www.facebook.com/"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p fa-2x" aria-hidden="true"></i></a></li>
+          <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+    </footer>
+    
+
 
     <!-- Here we have our final submit button -->
-    <div class='form-group'>
-      <label for='search'><strong>Where Do You Want To Find Events?</strong></label>
-      <input type='text' class="form-control" id="citySearch">
-      <button type="submit" class="btn btn-default topbuttonclass" id="run-search">
-        <i class="fa fa-search"></i> Search</button>
+   
 
     </div>
 
@@ -187,73 +204,15 @@
   <script src="calendarfunction.js"></script>
 
   <!-- Building Event Listener Functions Here -->
-  <script>
-    // Moment Variables
-    var now = moment()
-    var month = moment().format("MMMM")
-    var date = moment().format('dddd Do')
-    console.log(month)
 
-    // Month Array Using Moment
-
-    for (var i = 1; i < 12; i++) {
-
-      var increasemonthArray = [moment().format("MMMM"),
-      moment().add(1, "month").format("MMMM"),
-      moment().add(2, "month").format("MMMM"),
-      moment().add(3, "month").format("MMMM"),
-      moment().add(4, "month").format("MMMM"),
-      moment().add(5, "month").format("MMMM"),
-      moment().add(6, "month").format("MMMM"),
-      moment().add(7, "month").format("MMMM"),
-      moment().add(8, "month").format("MMMM"),
-      moment().add(9, "month").format("MMMM"),
-      moment().add(10, "month").format("MMMM"),
-      moment().add(11, "month").format("MMMM")]
-
-    }
-    var currentmonthIndex = 0;
-
-    $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
-
-    $(".addMo").on("click", function () {
-      currentmonthIndex++;
-      if (currentmonthIndex <= 11) {
-      $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
-        console.log(currentmonthIndex)
-      }
-
-    })
-
-    $(".subtractMo").on("click", function () {
-      currentmonthIndex--;
-      if (currentmonthIndex >= 0) {
-        $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
-
-      }
-    })
-
-    $(".dayofMonth").html(date)
-    console.log(increasemonthArray)
-
-    // DOM Elements
-    var cityInput = $("#citySearch").val()
-
-    var searchButton = $('#run-search')
-
-
-    $(searchButton).on("click", function () {
-
-      console.log(cityInput)
-
-
-    })
+   
 
 
 
 
 
-  </script>
+
+
 </body>
 
 </html>
