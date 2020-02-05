@@ -1,12 +1,4 @@
-.card-body a {
-    word-break: break-all;
-  }
-
-  .articleHeadline {
-    line-height: 1.5;
-  }
-
-  * {
+* {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     list-style: none;
@@ -14,25 +6,80 @@
     outline: none;
     padding: 0;
   }
+
+  h1 {
+    animation: animated-text 4s steps(17,end) 1s 1 normal both;
+    text-align: center;
+              
+  }
+  
+  /* text animation */
+  
+  @keyframes animated-text{
+    from{width: 0;}
+    to{width: 286px;}
+  }
+
+  .menu.align-center a {
+      color: crimson;
+      font-size: larger;
+    
+  }
+
+  .social-footer {
+    
+    padding: 1rem;
+    background: dark-gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .social-footer-icons {
+      margin-right: 0;
+  }
+.top-bar-right {
+    text-align: center;
+    padding-left: 0;
+}
+  
+  
+  
   
   a {
     text-decoration: none;
   }
   
-.button.primary {
-
-margin-top: 0cm;
-  }
   body, html {
-    height: 100%;
+      
+      background-image: url(https://cdn.hipwallpaper.com/i/98/30/D5VhEe.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 30%;
+   
   }
+
+  .jumbotron {
+    background-image: url(https://s23916.pcdn.co/wp-content/uploads/2019/12/big-events-in-2020.jpeg);
+    background-size: contain;
+
+  }
+   
+
   
-  body {
-      background: #dfebed;
-      font-family: 'Roboto', sans-serif;
+
+  .topbuttonclass {
+      color: #f78536 !important;
+      margin-bottom: 10px;
+      float:right;
+      margin-right:30px;
+      border: black gradient transparent 60% !important;
+
+
   }
   
   .container {
+      clear: both;
       align-items: center;
       display: flex;
       height: 100%;
@@ -46,16 +93,18 @@ margin-top: 0cm;
       background: #2b4450;
       border-radius: 4px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, .3);
-      height: 501px;
+      height: 551px;
     perspective: 1000;
       transition: .9s;
       transform-style: preserve-3d;
-      width: 100%;
+      width: 90%;
+      
   }
   
   /* Front - Calendar */
   .front {
       transform: rotateY(0deg);
+      
   }
   
   .current-date {
@@ -91,6 +140,8 @@ margin-top: 0cm;
       flex-direction: column;
       padding: 0 40px;
   }
+
+  
   
   .weeks div {
       display: flex;
@@ -99,11 +150,14 @@ margin-top: 0cm;
       justify-content: space-between;
       margin-bottom: 20px;
       width: 100%;
+      border-top: 1px solid rgba(73, 114, 133, .6);
   }
   
   .last-month {
       opacity: .3;
   }
+
+
   
   .weeks span {
       padding: 10px;
