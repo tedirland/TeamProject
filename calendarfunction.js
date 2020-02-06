@@ -93,7 +93,7 @@ console.log(increasemonthArray)
 var searchButton = $('#run-search')
 
 function buildQueryURL() {
-  var queryURL = "www.https://app.ticketmaster.com/discovery/v2/events.json?size=20&sort=random"
+  var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?size=20&sort=random"
   var searchTerms = ["&"]
   var apikey = "apikey=eXrkpUbuyRrUX1qzVXjrBbOpahQJEYLI"
   var city = "city=" +
