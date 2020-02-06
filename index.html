@@ -10,7 +10,9 @@
   <link rel="stylesheet" href="style.css">
   <!-- Bootstrap CSS CDN  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css" integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css"
+    integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg=="
+    crossorigin="anonymous">
 
   <!-- Font Awesome CSS Icons (For cool glyphicons) -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
@@ -42,14 +44,37 @@
     <div class="jumbotron" style="background-color: #20315A ; color: white;">
       <h1 class="text-center">
         <strong>
-          <i class="fa fa-taxi"></i> <i class="fa fa-music"></i> Night Out</strong> <i class="fa fa-glass"></i> <i class="fa fa-cutlery"></i>
+          <i class="fa fa-taxi"></i> <i class="fa fa-music"></i> Night Out</strong> <i class="fa fa-glass"></i> <i
+          class="fa fa-cutlery"></i>
       </h1>
+    </div>
+    <div class="inputBoxes">
+
+      <p>What Kinds of Events Are You Looking For?</p>
+      <input type="checkbox" id='sportsCheck' name="sports" value="sports"> Sports
+      <input type="checkbox" id="musicCheck" value="music"> Music
+      <input type="checkbox" id="theaterCheck" value="theater"> Theater
+
+      <p>When Do you Want To Go?</p>
+      <form>
+        <select name="when">
+
+          <option value="This Weekend" id="weekend">This Weekend</option>
+          <option value="specificDate" id="specificDate">Select Date</option>
+          <option value="notSure" id="notSure">I'm Not Sure!</option>
+        </select>
+
+
+
+      </form>
+
+
     </div>
 
     <div class="top-bar-right">
       <ul class="menu">
-        <li><input type="search" placeholder="Search"></li>
-        <li><button type="button" class="button">Search</button></li>
+        <li><input class="citySearch" type="search" placeholder="Enter A City"></li>
+        <li><button type="button" class="button searchButton">Find Events</button></li>
       </ul>
     </div>
 
@@ -59,19 +84,21 @@
       <div class="social-footer-icons">
         <ul class="menu simple">
           <li><a href="https://www.facebook.com/"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
-          <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+          </li>
           <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p fa-2x" aria-hidden="true"></i></a></li>
           <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
         </ul>
       </div>
     </footer>
-    
+
+    <div class="displanePane"></div>
 
 
     <!-- Here we have our final submit button -->
-   
 
-    </div>
+
+  </div>
 
   </div>
 
@@ -109,41 +136,39 @@
             <div class="second">
               <span>04</span>
               <span>05</span>
-              <span>06</span>
-              <span>07</span>
-              <span>08</span>
-              <span>09</span>
-              <span>10</span>
+              <span data-TMDate="2020-02-06T08:00Z">06</span>
+              <span data-TMDate="2020-02-07T08:00Z">07</span>
+              <span data-TMDate="2020-02-08T08:00Z">08</span>
+              <span data-TMDate="2020-02-09T08:00Z">09</span>
+              <span data-TMDate="2020-02-10T08:00Z">10</span>
             </div>
 
             <div class="third">
-              <span>11</span>
-              <span>12</span>
-              <span>13</span>
-              <span>14</span>
-              <span>15</span>
-              <span>16</span>
-              <span>17</span>
+              <span data-TMDate="2020-02-11T08:00Z">11</span>
+              <span data-TMDate="2020-02-12T08:00Z">12</span>
+              <span data-TMDate="2020-02-13T08:00Z">13</span>
+              <span data-TMDate="2020-02-14T08:00Z">14</span>
+              <span data-TMDate="2020-02-15T08:00Z">15</span>
+              <span data-TMDate="2020-02-16T08:00Z">16</span>
+              <span data-TMDate="2020-02-17T08:00Z">17</span>
             </div>
 
             <div class="fourth">
-              <span>18</span>
-              <span>19</span>
-              <span>20</span>
-              <span>21</span>
-              <span>22</span>
-              <span>23</span>
-              <span>24</span>
+              <span data-TMDate="2020-02-18T08:00Z">18</span>
+              <span data-TMDate="2020-02-19T08:00Z">19</span>
+              <span data-TMDate="2020-02-20T08:00Z">20</span>
+              <span data-TMDate="2020-02-21T08:00Z">21</span>
+              <span data-TMDate="2020-02-22T08:00Z">22</span>
+              <span data-TMDate="2020-02-23T08:00Z">23</span>
+              <span data-TMDate="2020-02-24T08:00Z">24</span>
             </div>
 
             <div class="fifth">
-              <span>25</span>
-              <span>26</span>
-              <span>27</span>
-              <span>28</span>
-              <span>29</span>
-              <span>30</span>
-              <span>31</span>
+              <span data-TMDate="2020-02-25T08:00Z">25</span>
+              <span data-TMDate="2020-02-26T08:00Z">26</span>
+              <span data-TMDate="2020-02-27T08:00Z">27</span>
+              <span data-TMDate="2020-02-28T08:00Z">28</span>
+              <span data-TMDate="2020-02-29T08:00Z">29</span>
             </div>
           </div>
         </div>
@@ -205,7 +230,7 @@
 
   <!-- Building Event Listener Functions Here -->
 
-   
+
 
 
 
