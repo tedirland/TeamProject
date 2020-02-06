@@ -57,14 +57,7 @@ h1 {
     text-decoration: none;
   }
   
-  body, html {
-      
-      background-image: url(https://cdn.hipwallpaper.com/i/98/30/D5VhEe.jpg);
-      background-size: cover;
-      height: 50%;
-      background-repeat: no-repeat;
-   
-  }
+
 
   .jumbotron {
     background-image: url(https://s23916.pcdn.co/wp-content/uploads/2019/12/big-events-in-2020.jpeg);

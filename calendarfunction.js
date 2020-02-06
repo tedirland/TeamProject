@@ -22,16 +22,16 @@ var app = {
 
     desiredSide.show();
   },
-  
+
   bindUIActions: function () {
     settings.days.on('click', function () {
-      const dateSpan = document.querySelector  
+      const dateSpan = document.querySelector
       console.log($(this).attr("data-TMDate"))
-      
+
       instance.swap(settings.calendar, settings.form);
       settings.input.focus();
     });
-    
+
     settings.buttons.on('click', function () {
       instance.swap(settings.form, settings.calendar);
     });
@@ -48,7 +48,7 @@ console.log(month)
 // Month Array Using Moment
 
 for (var i = 1; i < 12; i++) {
-  
+
   var increasemonthArray = [moment().format("MMMM"),
   moment().add(1, "month").format("MMMM"),
   moment().add(2, "month").format("MMMM"),
@@ -61,7 +61,7 @@ for (var i = 1; i < 12; i++) {
   moment().add(9, "month").format("MMMM"),
   moment().add(10, "month").format("MMMM"),
   moment().add(11, "month").format("MMMM")]
-  
+
 }
 var currentmonthIndex = 0;
 
@@ -73,14 +73,14 @@ $(".addMo").on("click", function () {
     $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
     console.log(currentmonthIndex)
   }
-  
+
 })
 
 $(".subtractMo").on("click", function () {
   currentmonthIndex--;
   if (currentmonthIndex >= 0) {
     $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
-    
+
   }
 })
 
@@ -93,50 +93,57 @@ console.log(increasemonthArray)
 var searchButton = $('#run-search')
 
 function buildQueryURL() {
-  var queryURL = "http://app.ticketmaster.com/discovery/v2/events.json?size=20"
+  var queryURL = "http://app.ticketmaster.com/discovery/v2/events.json?size=20&sort=random"
   var searchTerms = ["&"]
   var apikey = "apikey=eXrkpUbuyRrUX1qzVXjrBbOpahQJEYLI"
   var city = "city=" +
-  $('.citySearch')
-  .val()
-  .trim()
-  .toLowerCase()
-  
-  // var date = 
-  
-  var newQueryUrl = queryURL + searchTerms + apikey + searchTerms + city
+    $('.citySearch')
+      .val()
+      .trim()
+      .toLowerCase()
 
-  
+  var searchDateStart = moment().day(5).format("YYYY-MM-DD")
+  var searchDateEnd = moment().day(7).format("YYYY-MM-DD")
+
+  var searchDateString = searchTerms + "startDateTime=" + searchDateStart + "T18:00:00Z" + searchTerms + "endDateTime=" + searchDateEnd + "T01:00:00Z"
+
+  console.log(searchDateStart)
+  console.log(searchDateEnd)
+  console.log(searchDateString)
+
+  var newQueryUrl = queryURL + searchTerms + apikey + searchTerms + city + searchDateString
+
+
   var sports = document.getElementById("sportsCheck")
   var music = document.getElementById("musicCheck")
   var theater = document.getElementById("theaterCheck")
-  
+
   console.log(sports.checked)
   console.log(music.checked)
   console.log(theater.checked)
-  
+
   if (sports.checked) {
-    
+
     newQueryUrl += "&keyword=sports"
   } if (music.checked) {
-    
+
     newQueryUrl += "&keyword=music"
   } if (theater.checked) {
-    
+
     newQueryUrl += "&keyword=theater"
   }
   console.log(newQueryUrl)
   return newQueryUrl;
-  
+
   console.log(newUrl)
   // return queryURL + searchTerms + $.param(queryParams)
-  
-  
-  
+
+
+
 }
 
 $(".searchButton").on("click", function () {
-  
+
   var queryURL = buildQueryURL();
   $.ajax({
     type: "GET",
@@ -145,7 +152,52 @@ $(".searchButton").on("click", function () {
     dataType: "json",
     success: function (json) {
       console.log(json);
-      // Parse the response.
+      console.log(json._embedded.events.length)
+      var responseLength = json._embedded.events.length
+
+      $('.displayPane').html(
+
+        "<h2>" + "Check It Out: We Found " + responseLength + " events for you this weekend!" + "</h2>" + "<hr>"
+
+      )
+
+
+
+      for (var i = 0; i < responseLength; i++) {
+
+        var eventName = json._embedded.events[i].name
+        console.log(eventName)
+        var venueName = json._embedded.events[i]._embedded.venues[0].name
+        console.log(venueName)
+        var venueAddress = json._embedded.events[i]._embedded.venues[0].address.line1
+        console.log(venueAddress)
+        var startTime = parseInt(json._embedded.events[i].dates.start.localTime) - 12 + ":00 PM"
+        console.log(startTime)
+        var eventDate = json._embedded.events[0].dates.start.localDate
+
+
+
+
+        $(".displayPane").append(
+
+          "<ul>" +
+          "<li>" + "<h3>" + parseInt(i + 1) + "." + eventName +
+          "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
+          "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
+          "<button class='button' id='eventSelect'>" + "I'm In" +
+          "</li>" +
+          "</ul>"
+
+
+        )
+        console.log(json._embedded.events[i]._embedded.venues[0].name)
+
+
+      }
+
+
+
+      // Parse the response.<
       // Do other things.
     },
     error: function (xhr, status, err) {

@@ -50,23 +50,11 @@
     </div>
     <div class="inputBoxes">
 
-      <p>What Kinds of Events Are You Looking For?</p>
-      <input type="checkbox" id='sportsCheck' name="sports" value="sports"> Sports
-      <input type="checkbox" id="musicCheck" value="music"> Music
-      <input type="checkbox" id="theaterCheck" value="theater"> Theater
+      <p>What Do You Want To Do This Weekend?</p>
+      <input type="checkbox" id='sportsCheck' name="sports" value="sports"> Catch A Game
+      <input type="checkbox" id="musicCheck" value="music"> See A Concert
+      <input type="checkbox" id="theaterCheck" value="theater"> Indulge in Some Culture
 
-      <p>When Do you Want To Go?</p>
-      <form>
-        <select name="when">
-
-          <option value="This Weekend" id="weekend">This Weekend</option>
-          <option value="specificDate" id="specificDate">Select Date</option>
-          <option value="notSure" id="notSure">I'm Not Sure!</option>
-        </select>
-
-
-
-      </form>
 
 
     </div>
@@ -92,7 +80,12 @@
       </div>
     </footer>
 
-    <div class="displanePane"></div>
+    <div class="displayPane">
+
+      <ul class="eventList"></ul>
+    </div>
+
+
 
 
     <!-- Here we have our final submit button -->
@@ -103,7 +96,7 @@
   </div>
 
   <div class="container">
-    <div class="calendar">
+    <!-- <div class="calendar">
       <div class="front">
         <div class="current-date">
           <h2 class="dayofMonth"></h2>
@@ -207,17 +200,10 @@
         </div>
       </div>
 
-    </div>
+    </div> -->
   </div>
 
-
-  <!-- This row will handle all of the retrieved articles -->
-
-
-
-
-  <!-- Footer Region -->
-
+  <div class="eventDetails">
 
   </div>
 
