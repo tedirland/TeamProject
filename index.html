@@ -3,215 +3,77 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Night Out</title>
-
-  
-  
-  <link rel="stylesheet" href="style.css">
-  <!-- Bootstrap CSS CDN  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css" integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg==" crossorigin="anonymous">
-
-  <!-- Font Awesome CSS Icons (For cool glyphicons) -->
+  <title>Night Out</title> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-
-
-  <!-- Style to fix the issue of text extending past card length -->
-
-  
-  <style>
-    .card-body a {
-      word-break: break-all;
-    }
-
-    .articleHeadline {
-      line-height: 1.5;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css"
+    integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg=="
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Main Bootstrap Search -->
+  <div class="bg-image"></div>
 
 
-    <!-- Jumbotron for Title -->
     <div class="jumbotron" style="background-color: #20315A ; color: white;">
-      <h1 class="text-center">
+      <h1>
         <strong>
           <i class="fa fa-taxi"></i> <i class="fa fa-music"></i> Night Out</strong> <i class="fa fa-glass"></i> <i class="fa fa-cutlery"></i>
       </h1>
     </div>
 
-    <div class="top-bar-right">
-      <ul class="menu">
-        <li><input type="search" placeholder="Search"></li>
-        <li><button type="button" class="button">Search</button></li>
-      </ul>
-    </div>
-
-    
-
-    <footer class="social-footer">
+  <footer class="social-footer">
       <div class="social-footer-left">
       </div>
-      <div class="social-footer-icons">
+       <div class="social-footer-icons">
         <ul class="menu simple">
           <li><a href="https://www.facebook.com/"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
-          <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+          </li>
           <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p fa-2x" aria-hidden="true"></i></a></li>
           <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
         </ul>
       </div>
     </footer>
-    
-    
-  
+
+    <div class="inputBoxes">
+      <p>What Do You Want To Do This Weekend?</p>
+      <div class="grid-x grid-padding-x">
+        <div class="cell small-4"><input type="checkbox" id='sportsCheck' name="sports" value="sports"> Catch A Game</div>
+        <div class="cell small-4"><input type="checkbox" id="musicCheck" value="music"> See A Concert</div>
+        <div class="cell small-4"><input type="checkbox" id="theaterCheck" value="theater"> Indulge in Some Culture</div>
+      </div>
+      <!-- <input type="checkbox" id='sportsCheck' name="sports" value="sports"> Catch A Game
+      <input type="checkbox" id="musicCheck" value="music"> See A Concert
+      <input type="checkbox" id="theaterCheck" value="theater"> Indulge in Some Culture
+    </div> -->
 
     
+
+    <div class="top-bar-right">
+       <ul class="menu">
+        <li><input class="citySearch" type="search" placeholder="Enter A City"></li>
+        <li><button type="button" class="button searchButton">Find Events</button></li>
+      </ul>
+    </div>
+
    
-        
+    <div class="displayPane">
 
-            </form>
-          
-            <div class="container">
-              <div class="calendar">
-                <div class="front">
-                  <div class="current-date">
-                    <h1>Friday 15th</h1>
-                    <h1>January 2016</h1>	
-                  </div>
-        
-                  <div class="current-month">
-                    <ul class="week-days">
-                      <li>MON</li>
-                      <li>TUE</li>
-                      <li>WED</li>
-                      <li>THU</li>          
-                      <li>FRI</li>
-                      <li>SAT</li>
-                      <li>SUN</li>
-                    </ul>
-        
-                    <div class="weeks">
-                      <div class="first">
-                        <span class="last-month">28</span>
-                        <span class="last-month">29</span>
-                        <span class="last-month">30</span>
-                        <span class="last-month">31</span>
-                        <span>01</span>
-                        <span>02</span>
-                        <span>03</span>
-                      </div>
-        
-                      <div class="second">
-                        <span>04</span>
-                        <span>05</span>
-                        <span>06</span>
-                        <span>07</span>
-                        <span>08</span>
-                        <span>09</span>
-                        <span>10</span>
-                      </div>
-        
-                      <div class="third">
-                        <span>11</span>
-                        <span>12</span>
-                        <span>13</span>
-                        <span>14</span>
-                        <span>15</span>
-                        <span>16</span>
-                        <span>17</span>
-                      </div>
-        
-                      <div class="fourth">
-                        <span>18</span>
-                        <span>19</span>
-                        <span>20</span>
-                        <span>21</span>
-                        <span>22</span>
-                        <span>23</span>
-                        <span>24</span>
-                      </div>
-        
-                      <div class="fifth">
-                        <span>25</span>
-                        <span>26</span>
-                        <span>27</span>
-                        <span>28</span>
-                        <span>29</span>
-                        <span>30</span>
-                        <span>31</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-        
-                <div class="back">
-                  <input placeholder="What's the event?">
-                  <div class="info">
-                    <div class="date">
-                      <p class="info-date">
-                      Date: <span>Jan 15th, 2016</span>
-                      </p>
-                      <p class="info-time">
-                        Time: <span>6:35 PM</span>
-                      </p>
-                    </div>
-                    <div class="address">
-                      <p>
-                        Address: <span>129 W 81st St, New York, NY</span>
-                      </p>
-                    </div>
-                    <div class="observations">
-                      <p>
-                        Observations: <span>Be there 15 minutes earlier</span>
-                      </p>
-                    </div>
-                  </div>
-        
-                  <div class="actions">
-                    <button class="save">
-                      Save <i class="ion-checkmark"></i>
-                    </button>
-                    <button class="dismiss">
-                      Dismiss <i class="ion-android-close"></i>
-                    </button>
-                  </div>
-                </div>
-        
-              </div>
-            </div>
+     
 
-        
-            
-    <!-- This row will handle all of the retrieved articles -->
-<<<<<<< HEAD
+     
 
+ <footer class="footer">© Copyright 2020</footer>
 
-      
-
-=======
-
-
-      
-
->>>>>>> 5d182b9ddf9a066d8d38765483f04246aab8882f
-    <!-- Footer Region -->
- 
-
-  </div>
-
-  <!-- jQuery JS -->
-  <!-- Compressed CSS -->
-
-<!-- Compressed JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/js/foundation.min.js" integrity="sha256-mRYlCu5EG+ouD07WxLF8v4ZAZYCA6WrmdIXyn1Bv9Vk= sha384-KzKofw4qqetd3kvuQ5AdapWPqV1ZI+CnfyfEwZQgPk8poOLWaabfgJOfmW7uI+AV sha512-0gHfaMkY+Do568TgjJC2iMAV0dQlY4NqbeZ4pr9lVUTXQzKu8qceyd6wg/3Uql9qA2+3X5NHv3IMb05wb387rA==" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-  <!-- Code to the JavaScript File -->
-  <script src="script.js"></script>
   
+  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/js/foundation.min.js" integrity="sha256-mRYlCu5EG+ouD07WxLF8v4ZAZYCA6WrmdIXyn1Bv9Vk= sha384-KzKofw4qqetd3kvuQ5AdapWPqV1ZI+CnfyfEwZQgPk8poOLWaabfgJOfmW7uI+AV sha512-0gHfaMkY+Do568TgjJC2iMAV0dQlY4NqbeZ4pr9lVUTXQzKu8qceyd6wg/3Uql9qA2+3X5NHv3IMb05wb387rA==" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 
 </body>
 
