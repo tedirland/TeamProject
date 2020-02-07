@@ -43,7 +43,7 @@ app.init();
 var now = moment()
 var month = moment().format("MMMM")
 var date = moment().format('dddd Do')
-console.log(month)
+// console.log(month)
 
 // Month Array Using Moment
 
@@ -71,7 +71,7 @@ $(".addMo").on("click", function () {
   currentmonthIndex++;
   if (currentmonthIndex <= 11) {
     $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
-    console.log(currentmonthIndex)
+    // console.log(currentmonthIndex)
   }
 
 })
@@ -85,7 +85,7 @@ $(".subtractMo").on("click", function () {
 })
 
 $(".dayofMonth").html(date)
-console.log(increasemonthArray)
+// console.log(increasemonthArray)
 
 // DOM Elements
 
@@ -93,7 +93,7 @@ console.log(increasemonthArray)
 var searchButton = $('#run-search')
 
 function buildQueryURL() {
-  var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?size=20&sort=random"
+  var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?size=5&sort=random"
   var searchTerms = ["&"]
   var apikey = "apikey=eXrkpUbuyRrUX1qzVXjrBbOpahQJEYLI"
   var city = "city=" +
@@ -166,14 +166,21 @@ $(".searchButton").on("click", function () {
       for (var i = 0; i < responseLength; i++) {
 
         var eventName = json._embedded.events[i].name
-        console.log(eventName)
+        // console.log(eventName)
         var venueName = json._embedded.events[i]._embedded.venues[0].name
-        console.log(venueName)
+        // console.log(venueName)
         var venueAddress = json._embedded.events[i]._embedded.venues[0].address.line1
-        console.log(venueAddress)
+        // console.log(venueAddress)
         var startTime = parseInt(json._embedded.events[i].dates.start.localTime) - 12 + ":00 PM"
-        console.log(startTime)
-        var eventDate = json._embedded.events[0].dates.start.localDate
+        // console.log(startTime)
+        var eventDate = json._embedded.events[i].dates.start.localDate
+        var lng = json._embedded.events[i]._embedded.venues[0].location.longitude
+        var lat = json._embedded.events[i]._embedded.venues[0].location.latitude
+        var googleCoords = lng + "," + lat
+
+        console.log(lng)
+        console.log(lat)
+        console.log(googleCoords)
 
 
 
@@ -184,16 +191,30 @@ $(".searchButton").on("click", function () {
           "<li>" + "<h3>" + parseInt(i + 1) + "." + eventName +
           "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
           "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
-          "<button class='button' id='eventSelect'>" + "I'm In" +
+          "<a target='blank' href='map.html'>" + "I'm In" +
           "</li>" +
           "</ul>"
 
 
         )
-        console.log(json._embedded.events[i]._embedded.venues[0].name)
+        
 
 
-      }
+      } // Emd of For Loop
+
+      $('#eventSelect').on("click" , function() {
+
+        window.map.html;
+
+
+        console.log(event.target)
+        console.log(this)
+
+      
+        console.log("This is working")
+
+
+      })
 
 
 
