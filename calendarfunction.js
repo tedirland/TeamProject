@@ -152,12 +152,12 @@ $(".searchButton").on("click", function () {
     dataType: "json",
     success: function (json) {
       console.log(json);
-      console.log(json._embedded.events.length)
+      // console.log(json._embedded.events.length)
       var responseLength = json._embedded.events.length
 
       $('.displayPane').html(
 
-        "<h2>" + "Check It Out: We Found " + responseLength + " events for you this weekend!" + "</h2>" + "<hr>"
+        "<h2>" + "Check It Out: We found " + responseLength + " events for you this weekend!" + "</h2>" + "<hr>"
 
       )
 
@@ -167,10 +167,16 @@ $(".searchButton").on("click", function () {
 
         var eventName = json._embedded.events[i].name
         // console.log(eventName)
+        var eventImage = json._embedded.events[i].images[i].url
+        console.log(eventImage)
         var venueName = json._embedded.events[i]._embedded.venues[0].name
         // console.log(venueName)
-        var venueAddress = json._embedded.events[i]._embedded.venues[0].address.line1
+        var venueCity = json._embedded.events[i]._embedded.venues[0].city.name
+        var venueState = json._embedded.events[i]._embedded.venues[0].state.stateCode
+        var venueZip = json._embedded.events[i]._embedded.venues[0].postalCode
+        var venueAddress = json._embedded.events[i]._embedded.venues[0].address.line1 + " " + venueCity + "," + " " + venueState + " " + venueZip
         // console.log(venueAddress)
+
         var startTime = parseInt(json._embedded.events[i].dates.start.localTime) - 12 + ":00 PM"
         // console.log(startTime)
         var eventDate = json._embedded.events[i].dates.start.localDate
@@ -178,9 +184,9 @@ $(".searchButton").on("click", function () {
         var lat = json._embedded.events[i]._embedded.venues[0].location.latitude
         var googleCoords = lng + "," + lat
 
-        console.log(lng)
-        console.log(lat)
-        console.log(googleCoords)
+        // console.log(lng)
+        // console.log(lat)
+        // console.log(googleCoords)
 
 
 
@@ -188,29 +194,25 @@ $(".searchButton").on("click", function () {
         $(".displayPane").append(
 
           "<ul>" +
-          "<li>" + "<h3>" + parseInt(i + 1) + "." + eventName +
+          "<li class= 'test' id ='test'>" + "<h3>" + parseInt(i + 1) + "." + eventName + "<img class='thumbnail' src=" + eventImage + ">" +
           "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
           "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
-          "<a target='blank' href='map.html'>" + "I'm In" +
+          "<button class='button eventSelect'  >" + "I'm In" +
           "</li>" +
           "</ul>"
 
 
         )
-        
 
 
-      } // Emd of For Loop
-
-      $('#eventSelect').on("click" , function() {
-
-        window.map.html;
 
 
-        console.log(event.target)
-        console.log(this)
+      } // End of For Loop
 
-      
+      $('#eventSelect').on("click", function () {
+
+
+
         console.log("This is working")
 
 

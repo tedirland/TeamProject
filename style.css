@@ -56,6 +56,12 @@ h1 {
     
  }
 
+ .thumbnail{
+
+  width: 200px;
+  height: 200px;
+ }
+
   .jumbotron {
       background-image: url("assets/images/31944313-party-music-background-for-active-night-events.jpg");
       background-position: top;
