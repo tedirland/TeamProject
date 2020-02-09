@@ -155,7 +155,7 @@ $(".searchButton").on("click", function () {
       // console.log(json._embedded.events.length)
       var responseLength = json._embedded.events.length
 
-      $('.displayPane').html(
+      $('.accordion').html(
 
         "<h2>" + "Check It Out: We found " + responseLength + " events for you this weekend!" + "</h2>" + "<hr>"
 
@@ -188,26 +188,42 @@ $(".searchButton").on("click", function () {
         // console.log(lat)
         // console.log(googleCoords)
 
+var foundationArray = ["collapseOne", "collapseTwo", "collapseThree", "collapseFour","collapseFive" ]
+var dataTarget = ["#collapseOne", "#collapseTwo", "#collapseThree", "#collapseFour","#collapseFive" ]
+var headingArray = ["headingOne", "headingTwo", "headingThree", "headingFour","headingFive" ]
 
+        $('.accordion').append(
+          "<div class = 'card'>" +
+          "<div class= 'card-header' id ="+headingArray[i]+">" + 
+          "<h2 class='mb-0'>"+
+          "<button class='btn btn-link' type='button' data-toggle='collapse' data-target="+dataTarget[i]+" aria-expanded='true' aria-controls="+foundationArray[i]+ ">" +
+           parseInt(i + 1) + "." + eventName +
+           "</button>"+
+           "</h2>"+
+         "</div>" +
+         "</div>" +
+         "<div id=" + foundationArray[i] + ' ' + "class='collapse' aria-labelledby="+headingArray[i]+" data-parent='#accordionExample'>"+
+         "<div class='card-body'>"+
+         "<img class='thumbnail' src=" + eventImage +
+         "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
+         "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
+         "<button class='button eventSelect'  >" + "I'm In" +
+         "</div>" +
+         "</div>" + 
+         "</div>"
 
-
-        $(".displayPane").append(
-
-          "<ul>" +
-          "<li class= 'test' id ='test'>" + "<h3>" + parseInt(i + 1) + "." + eventName + "<img class='thumbnail' src=" + eventImage + ">" +
-          "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
-          "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
-          "<button class='button eventSelect'  >" + "I'm In" +
-          "</li>" +
-          "</ul>"
-
+       
 
         )
+   } // End of For Loop
 
-
-
-
-      } // End of For Loop
+//    function showEventinfo() {
+//   $(foundationArray[i]).on("click", addClass('show');
+// };
+      
+// $(".btn btn-link").click(function(){
+//   $('#collapseOne').addClass("show");
+// });
 
       $('#eventSelect').on("click", function () {
 
