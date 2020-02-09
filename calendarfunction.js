@@ -204,7 +204,7 @@ var headingArray = ["headingOne", "headingTwo", "headingThree", "headingFour","h
          "</div>" +
          "<div id=" + foundationArray[i] + ' ' + "class='collapse' aria-labelledby="+headingArray[i]+" data-parent='#accordionExample'>"+
          "<div class='card-body'>"+
-         "<img class='thumbnail' src=" + eventImage +
+         "<img class='thumbnail' src=" + eventImage + ">" +
          "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
          "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
          "<button class='button eventSelect'  >" + "I'm In" +
