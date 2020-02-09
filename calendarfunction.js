@@ -1,92 +1,3 @@
-var app = {
-  settings: {
-    container: $('.calendar'),
-    calendar: $('.front'),
-    days: $('.weeks span'),
-    form: $('.back'),
-    input: $('.back input'),
-    buttons: $('.back button')
-  },
-
-  init: function () {
-    instance = this;
-    settings = this.settings;
-    this.bindUIActions();
-  },
-
-  swap: function (currentSide, desiredSide) {
-    settings.container.toggleClass('flip');
-
-    currentSide.fadeOut(900);
-    currentSide.hide();
-
-    desiredSide.show();
-  },
-
-  bindUIActions: function () {
-    settings.days.on('click', function () {
-      const dateSpan = document.querySelector
-      console.log($(this).attr("data-TMDate"))
-
-      instance.swap(settings.calendar, settings.form);
-      settings.input.focus();
-    });
-
-    settings.buttons.on('click', function () {
-      instance.swap(settings.form, settings.calendar);
-    });
-  }
-}
-
-app.init();
-
-var now = moment()
-var month = moment().format("MMMM")
-var date = moment().format('dddd Do')
-// console.log(month)
-
-// Month Array Using Moment
-
-for (var i = 1; i < 12; i++) {
-
-  var increasemonthArray = [moment().format("MMMM"),
-  moment().add(1, "month").format("MMMM"),
-  moment().add(2, "month").format("MMMM"),
-  moment().add(3, "month").format("MMMM"),
-  moment().add(4, "month").format("MMMM"),
-  moment().add(5, "month").format("MMMM"),
-  moment().add(6, "month").format("MMMM"),
-  moment().add(7, "month").format("MMMM"),
-  moment().add(8, "month").format("MMMM"),
-  moment().add(9, "month").format("MMMM"),
-  moment().add(10, "month").format("MMMM"),
-  moment().add(11, "month").format("MMMM")]
-
-}
-var currentmonthIndex = 0;
-
-$(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
-
-$(".addMo").on("click", function () {
-  currentmonthIndex++;
-  if (currentmonthIndex <= 11) {
-    $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
-    // console.log(currentmonthIndex)
-  }
-
-})
-
-$(".subtractMo").on("click", function () {
-  currentmonthIndex--;
-  if (currentmonthIndex >= 0) {
-    $(".currentMonth").html("<h2>" + increasemonthArray[currentmonthIndex] + "</h2>")
-
-  }
-})
-
-$(".dayofMonth").html(date)
-// console.log(increasemonthArray)
-
 // DOM Elements
 
 
@@ -102,13 +13,33 @@ function buildQueryURL() {
       .trim()
       .toLowerCase()
 
+
+  var thisWeekend = document.getElementById("thisWknd")
+  var nextWeekend = document.getElementById("nextWknd")
+  var nextWkndsearchDateStart = moment().add(1, 'week').day(5).format("YYYY-MM-DD")
+  var nextWkndsearchDateEnd = moment().add(1, 'week').day(7).format("YYYY-MM-DD")
   var searchDateStart = moment().day(5).format("YYYY-MM-DD")
   var searchDateEnd = moment().day(7).format("YYYY-MM-DD")
 
-  var searchDateString = searchTerms + "startDateTime=" + searchDateStart + "T18:00:00Z" + searchTerms + "endDateTime=" + searchDateEnd + "T01:00:00Z"
+  console.log(thisWeekend.checked)
+  console.log(nextWeekend.checked)
+  var searchDateString = searchTerms + "startDateTime="
 
-  console.log(searchDateStart)
-  console.log(searchDateEnd)
+
+  if (thisWeekend.checked) {
+
+
+    searchDateString += searchDateStart + "T18:00:00Z" + searchTerms + "endDateTime=" + searchDateEnd + "T01:00:00Z"
+
+
+
+  }if (nextWeekend.checked) {
+
+    searchDateString += nextWkndsearchDateStart + "T18:00:00Z" + searchTerms + "endDateTime=" + nextWkndsearchDateEnd + "T01:00:00Z"
+
+
+  }
+
   console.log(searchDateString)
 
   var newQueryUrl = queryURL + searchTerms + apikey + searchTerms + city + searchDateString
@@ -118,9 +49,7 @@ function buildQueryURL() {
   var music = document.getElementById("musicCheck")
   var theater = document.getElementById("theaterCheck")
 
-  console.log(sports.checked)
-  console.log(music.checked)
-  console.log(theater.checked)
+
 
   if (sports.checked) {
 
@@ -143,6 +72,8 @@ function buildQueryURL() {
 }
 
 $(".searchButton").on("click", function () {
+
+
 
   var queryURL = buildQueryURL();
   $.ajax({
@@ -180,50 +111,50 @@ $(".searchButton").on("click", function () {
         var startTime = parseInt(json._embedded.events[i].dates.start.localTime) - 12 + ":00 PM"
         // console.log(startTime)
         var eventDate = json._embedded.events[i].dates.start.localDate
-        var lng = json._embedded.events[i]._embedded.venues[0].location.longitude
-        var lat = json._embedded.events[i]._embedded.venues[0].location.latitude
-        var googleCoords = lng + "," + lat
+        // var lng = json._embedded.events[i]._embedded.venues[0].location.longitude
+        // var lat = json._embedded.events[i]._embedded.venues[0].location.latitude
+        // var googleCoords = lng + "," + lat
 
         // console.log(lng)
         // console.log(lat)
         // console.log(googleCoords)
 
-var foundationArray = ["collapseOne", "collapseTwo", "collapseThree", "collapseFour","collapseFive" ]
-var dataTarget = ["#collapseOne", "#collapseTwo", "#collapseThree", "#collapseFour","#collapseFive" ]
-var headingArray = ["headingOne", "headingTwo", "headingThree", "headingFour","headingFive" ]
+        var foundationArray = ["collapseOne", "collapseTwo", "collapseThree", "collapseFour", "collapseFive"]
+        var dataTarget = ["#collapseOne", "#collapseTwo", "#collapseThree", "#collapseFour", "#collapseFive"]
+        var headingArray = ["headingOne", "headingTwo", "headingThree", "headingFour", "headingFive"]
 
         $('.accordion').append(
           "<div class = 'card'>" +
-          "<div class= 'card-header' id ="+headingArray[i]+">" + 
-          "<h2 class='mb-0'>"+
-          "<button class='btn btn-link' type='button' data-toggle='collapse' data-target="+dataTarget[i]+" aria-expanded='true' aria-controls="+foundationArray[i]+ ">" +
-           parseInt(i + 1) + "." + eventName +
-           "</button>"+
-           "</h2>"+
-         "</div>" +
-         "</div>" +
-         "<div id=" + foundationArray[i] + ' ' + "class='collapse' aria-labelledby="+headingArray[i]+" data-parent='#accordionExample'>"+
-         "<div class='card-body'>"+
-         "<img class='thumbnail' src=" + eventImage + ">" +
-         "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
-         "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
-         "<button class='button eventSelect'  >" + "I'm In" +
-         "</div>" +
-         "</div>" + 
-         "</div>"
+          "<div class= 'card-header' id =" + headingArray[i] + ">" +
+          "<h2 class='mb-0'>" +
+          "<button class='btn btn-link' type='button' data-toggle='collapse' data-target=" + dataTarget[i] + " aria-expanded='true' aria-controls=" + foundationArray[i] + ">" +
+          parseInt(i + 1) + "." + eventName +
+          "</button>" +
+          "</h2>" +
+          "</div>" +
+          "</div>" +
+          "<div id=" + foundationArray[i] + ' ' + "class='collapse' aria-labelledby=" + headingArray[i] + " data-parent='#accordionExample'>" +
+          "<div class='card-body'>" +
+          "<img class='thumbnail' src=" + eventImage + ">" +
+          "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
+          "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
+          "<button class='button eventSelect'  >" + "I'm In" +
+          "</div>" +
+          "</div>" +
+          "</div>"
 
-       
+
 
         )
-   } // End of For Loop
+      } // End of For Loop
 
-//    function showEventinfo() {
-//   $(foundationArray[i]).on("click", addClass('show');
-// };
-      
-// $(".btn btn-link").click(function(){
-//   $('#collapseOne').addClass("show");
-// });
+      //    function showEventinfo() {
+      //   $(foundationArray[i]).on("click", addClass('show');
+      // };
+
+      // $(".btn btn-link").click(function(){
+      //   $('#collapseOne').addClass("show");
+      // });
 
       $('#eventSelect').on("click", function () {
 
