@@ -3,77 +3,140 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Night Out</title> 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <title>Night Out</title>
+
+
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap CSS CDN  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css"
     integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg=="
     crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Font Awesome CSS Icons (For cool glyphicons) -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+
+  <!-- Style to fix the issue of text extending past card length -->
+
 </head>
 
 <body>
 
   <div class="bg-image"></div>
+  <!-- Main Bootstrap Search -->
 
 
+  <div>
+
+
+    <!-- Jumbotron for Title -->
     <div class="jumbotron" style="background-color: #20315A ; color: white;">
       <h1>
         <strong>
-          <i class="fa fa-taxi"></i> <i class="fa fa-music"></i> Night Out</strong> <i class="fa fa-glass"></i> <i class="fa fa-cutlery"></i>
+          <i class="fa fa-taxi"></i> <i class="fa fa-music"></i> Night Out</strong> <i class="fa fa-glass"></i> <i
+          class="fa fa-cutlery"></i>
       </h1>
     </div>
 
-  <footer class="social-footer">
+    <footer class="social-footer">
       <div class="social-footer-left">
       </div>
-       <div class="social-footer-icons">
+      <div class="social-footer-icons">
         <ul class="menu simple">
           <li><a href="https://www.facebook.com/"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
           <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
           </li>
-          <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p fa-2x" aria-hidden="true"></i></a></li>
           <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
         </ul>
       </div>
     </footer>
-
     <div class="inputBoxes">
-      <p>What Do You Want To Do This Weekend?</p>
-      <div class="grid-x grid-padding-x">
-        <div class="cell small-4"><input type="checkbox" id='sportsCheck' name="sports" value="sports"> Catch A Game</div>
-        <div class="cell small-4"><input type="checkbox" id="musicCheck" value="music"> See A Concert</div>
-        <div class="cell small-4"><input type="checkbox" id="theaterCheck" value="theater"> Indulge in Some Culture</div>
-      </div>
-      <!-- <input type="checkbox" id='sportsCheck' name="sports" value="sports"> Catch A Game
-      <input type="checkbox" id="musicCheck" value="music"> See A Concert
-      <input type="checkbox" id="theaterCheck" value="theater"> Indulge in Some Culture
-    </div> -->
+      <p>When do you want to go out?</p>
+      <div class="btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-dark active">
 
+          <div class="cell small-4"><input type="radio" id='thisWknd' name="thisWknd" value="thisWknd"> This Weekend
+          </div>
+        </label>
+
+        <label class="btn btn-secondary active">
+
+          <div class="cell small-4"><input type="radio" id='nextWknd' name="nextWknd" value="nextWknd"> Next Weekend
+          </div>
+        </label>
+
+
+        </div> 
+
+        <hr>
+        <p>What do you want to do?</p>
+      
+
+
+      <div class="btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-dark active">
+
+          <div class="cell small-4"><input type="radio" id='sportsCheck' name="sports" value="sports"> Catch A Game
+          </div>
+        </label>
+        <label class="btn btn-info active">
+          <div class="cell small-4"><input type="radio" id="musicCheck" value="music"> See A Concert</div>
+        </label>
+        <label class="btn btn-primary active">
+          <div class="cell small-4"><input type="radio" id="theaterCheck" value="theater"> Indulge in Some Culture
+          </div>
+        </label>
+      </div>
+
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><input class="citySearch" type="search" placeholder="Enter A City"></li>
+          <li><button type="button" class="button searchButton">Find Events</button></li>
+        </ul>
+      </div>
+
+
+
+      <div class="accordion" id="accordionExample">
+
+        
+        
+        <footer class="footer">© Copyright 2020</footer>
+        
+        
+      </div>
+      
+  
+    </div>
     
 
-    <div class="top-bar-right">
-       <ul class="menu">
-        <li><input class="citySearch" type="search" placeholder="Enter A City"></li>
-        <li><button type="button" class="button searchButton">Find Events</button></li>
-      </ul>
-    </div>
 
-   
-    <div class="displayPane">
+    <!-- jQuery JS -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdhu40g6B7ADuUxEykvacOYo-4cQUe0VI&libraries=places">
+    </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Code to the JavaScript File -->
+    <script src="script.js"></script>
 
-     
+    <!-- Building Event Listener Functions Here -->
 
-     
 
- <footer class="footer">© Copyright 2020</footer>
 
-  
-  <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/js/foundation.min.js" integrity="sha256-mRYlCu5EG+ouD07WxLF8v4ZAZYCA6WrmdIXyn1Bv9Vk= sha384-KzKofw4qqetd3kvuQ5AdapWPqV1ZI+CnfyfEwZQgPk8poOLWaabfgJOfmW7uI+AV sha512-0gHfaMkY+Do568TgjJC2iMAV0dQlY4NqbeZ4pr9lVUTXQzKu8qceyd6wg/3Uql9qA2+3X5NHv3IMb05wb387rA==" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
 
 </body>
 
