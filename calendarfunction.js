@@ -23,19 +23,19 @@ function buildQueryURL() {
 
   console.log(thisWeekend.checked)
   console.log(nextWeekend.checked)
-  var searchDateString = searchTerms + "startDateTime="
+  // var searchDateString = searchTerms + "startDateTime="
 
 
   if (thisWeekend.checked) {
 
 
-    searchDateString += searchDateStart + "T18:00:00Z" + searchTerms + "endDateTime=" + searchDateEnd + "T01:00:00Z"
+    var searchDateString = searchTerms + "startDateTime=" + searchDateStart + "T18:00:00Z" + searchTerms + "endDateTime=" + searchDateEnd + "T01:00:00Z"
 
 
 
-  }if (nextWeekend.checked) {
+  } if (nextWeekend.checked) {
 
-    searchDateString += nextWkndsearchDateStart + "T18:00:00Z" + searchTerms + "endDateTime=" + nextWkndsearchDateEnd + "T01:00:00Z"
+    var searchDateString = searchTerms + "startDateTime=" + nextWkndsearchDateStart + "T18:00:00Z" + searchTerms + "endDateTime=" + nextWkndsearchDateEnd + "T01:00:00Z"
 
 
   }
@@ -108,16 +108,16 @@ $(".searchButton").on("click", function () {
         var venueAddress = json._embedded.events[i]._embedded.venues[0].address.line1 + " " + venueCity + "," + " " + venueState + " " + venueZip
         // console.log(venueAddress)
 
-        var startTime = parseInt(json._embedded.events[i].dates.start.localTime) - 12 + ":00 PM"
-        // console.log(startTime)
-        var eventDate = json._embedded.events[i].dates.start.localDate
-        // var lng = json._embedded.events[i]._embedded.venues[0].location.longitude
-        // var lat = json._embedded.events[i]._embedded.venues[0].location.latitude
-        // var googleCoords = lng + "," + lat
+        var startTime = moment(json._embedded.events[i].dates.start.localTime, "HH:mm:ss").format("h:mm A")
+        console.log(startTime)
 
-        // console.log(lng)
-        // console.log(lat)
-        // console.log(googleCoords)
+      
+        // console.log(startTime)
+        var eventDate = moment(json._embedded.events[i].dates.start.localDate).format("dddd, MMMM, Do, YYYY")
+        
+
+        var lng = json._embedded.events[i]._embedded.venues[0].location.longitude
+        var lat = json._embedded.events[i]._embedded.venues[0].location.latitude
 
         var foundationArray = ["collapseOne", "collapseTwo", "collapseThree", "collapseFour", "collapseFive"]
         var dataTarget = ["#collapseOne", "#collapseTwo", "#collapseThree", "#collapseFour", "#collapseFive"]
@@ -138,7 +138,7 @@ $(".searchButton").on("click", function () {
           "<img class='thumbnail' src=" + eventImage + ">" +
           "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
           "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
-          "<button class='button eventSelect'  >" + "I'm In" +
+          "<button class='button' id='eventSelect' data-lng =" + lng + " " + "data-lat=" + lat + ">" + "I'm In" +
           "</div>" +
           "</div>" +
           "</div>"
@@ -148,22 +148,41 @@ $(".searchButton").on("click", function () {
         )
       } // End of For Loop
 
-      //    function showEventinfo() {
-      //   $(foundationArray[i]).on("click", addClass('show');
-      // };
+      //   var lng0 = json._embedded.events[0]._embedded.venues[0].location.longitude
+      //   
+      //   var lng1 = json._embedded.events[1]._embedded.venues[0].location.longitude
+      //   var lat1 = json._embedded.events[1]._embedded.venues[0].location.latitude
+      //   var lng2 = json._embedded.events[2]._embedded.venues[0].location.longitude
+      //   var lat2 = json._embedded.events[2]._embedded.venues[0].location.latitude
+      //   var lng3 = json._embedded.events[3]._embedded.venues[0].location.longitude
+      //   var lat3 = json._embedded.events[3]._embedded.venues[0].location.latitude
+      //   var lng4 = json._embedded.events[4]._embedded.venues[0].location.longitude
+      //   var lat4 = json._embedded.events[4]._embedded.venues[0].location.latitude
 
-      // $(".btn btn-link").click(function(){
-      //   $('#collapseOne').addClass("show");
-      // });
-
-      $('#eventSelect').on("click", function () {
-
+      // var lngArray = [lng0, lng1, lng2, lng3, lng4]
+      // var latArray = [lat0, lat1, lat2, lat3, lat4]
+      //   console.log(lngArray)
+      //   console.log(latArray)
 
 
-        console.log("This is working")
+
+
+      $(".button").on("click", function () {
+
+        var selectedVenueLng = $(this).attr("data-lng")
+
+        var selectedVenueLat = $(this).attr("data-lat")
 
 
       })
+
+
+
+
+
+
+
+
 
 
 
