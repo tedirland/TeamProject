@@ -1,220 +1,254 @@
 * {
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    list-style: none;
-    margin: 0;
-    outline: none;
-    padding: 0;
-  }
-
-  .card-body a {
-    word-break: break-all;
-  }
-
-  .articleHeadline {
-    line-height: 1.5;
-  }
-h1 {
-    text-align: center;
-    margin-right: 20px;
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 0;
 }
- 
-  .social-footer {
-    padding-top: 50px;
+
+.card-body a {
+  word-break: break-all;
+}
+
+.articleHeadline {
+  line-height: 1.5;
+}
+h1 {
+  text-align: center;
+  margin-right: 20px;
+}
+
+.social-footer {
+  background-color: lavenderblush;
+  padding-top: 50px;
+  padding:20px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ }
+
+ .social-footer-icons {
+     margin-right: 0;
+ }
+.top-bar-right {
+   text-align: center;
+   padding-left: 0;
+}
+
+strong {
+  font-size: larger;
+  font-family: 'Great Vibes', cursive;
+
+}
+
+.fa {
+   color: blue;
+}
+
+.fa-glass {
+ color: crimson;
+}
+.fa-cutlery {
+ color: darkcyan;
+}
+.fa-music {
+ color: yellow;
+}
+.fa-taxi {
+color: blue;
+}
+a {
+  text-decoration: none;
+}
+
+body { 
+  padding:20px;
+  margin-right: 20px;
+  background-color: lavender;
+  background-size: cover;
+
+   
+}
+
+.thumbnail{
+
+width: 200px;
+height: 200px;
+}
+
+.jumbotron {
+    background-image: url("assets/images/31944313-party-music-background-for-active-night-events.jpg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding:20px;
     margin: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-   }
- 
-   .social-footer-icons {
-       margin-right: 0;
-   }
- .top-bar-right {
-     text-align: center;
-     padding-left: 0;
- }
- 
-
- 
-.fa {
-     color: palegreen;
- }
-
-  a {
-    text-decoration: none;
-  }
+    box-shadow: 0ex;
+    
   
-  body { 
-     background-image: url("assets/images/D5VhEe.jpg");
-      height: 100%;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+} 
+
+
+.text-center {
+padding-right: 50px;
+text-align: center;
+}
  
-    
- }
-
- .thumbnail{
-
-  width: 200px;
-  height: 200px;
- }
-
-  .jumbotron {
-      background-image: url("assets/images/31944313-party-music-background-for-active-night-events.jpg");
-      background-position: top;
-      background-repeat: no-repeat;
-      background-size: cover;
-      padding:20px;
-      margin: 20px;
-      box-shadow: 0ex;
-      
-    
- } 
 
 
-  .text-center {
-  padding-right: 50px;
+
+.top-bar-right {
+    color: #f78536 !important;
+    margin-bottom: 10px;
+    float: center;
+    margin: 100px;
+    border: black gradient transparent 60% !important;
+
+
+}
+
+.footer{
+  background-color: lavenderblush;
   text-align: center;
- }
-   
+  background-color: #2b4450;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0;
+  width: 97.2%;
+  height: 80px;
+  color: #dddddd;
+  font-size: 15px;
+  border: 1px solid gray;
+  border-top-color: 10px solid #4aaaa5;
+  margin: 0px 20px 0px;
 
-  
+}
 
-  .top-bar-right {
-      color: #f78536 !important;
-      margin-bottom: 10px;
-      float: center;
-      margin: 100px;
-      border: black gradient transparent 60% !important;
-
-
-  }
-  
-  .footer{
-    text-align: center;
-    background-color: #2b4450;
-    position: fixed;
-    padding: 10px;
-    left: 0px;
-    right: 0px;
-    bottom: 0;
-    width: 100%;
-    height: 80px;
-    color: #dddddd;
-    font-size: 15px;
-    border: 1px solid gray;
-    border-top-color: 10px solid #4aaaa5;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-
-  .inputBoxes {
-      text-align: center;
-      padding-bottom: 150px;
-  }
-
-  .menu {
-    margin-left: 400px;
-padding-top: 10px;
-  }
-
-  p {
-      color: magenta;
-  }
-
-
-  .accordion {
-   text-align: left;
-    color: tomato;
-    
-  }
-  h2 {
-      color: yellow;
-
-  }
-
-  h1 {
-      color: black;
-  }
-
-
-  .firstlineclass {
-  outline: pink solid 5px;
-  margin: auto;  
-  padding: 20px;
+#footer {
   text-align: center;
-  }
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  color: #dddddd;
+  background-color: #2b4450;
+  margin-left: 20px;
+  margin-right: 20px;
+ 
 
-  .secondlineclass {
-      color: brown;
 
-  }
+}
 
-  .thirdlineclass {
-      color: chocolate;
+* {
+  box-sizing: border-box;
+}
 
-  }
+.inputBoxes {
+  padding:20px;
+  margin: 20px;
+  font-size: 20px;
+  background-color: lavender;
+  text-align: center;
+}
 
-  #map {
-    height: 100%;
-    background-color: grey;
-  }
+.menu { 
+  text-align: center;
+}
 
-  /* Optional: Makes the sample page fill the window. */
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
+p { 
+  font-family: 'Great Vibes', cursive; 
+font-size: 30px;
+  color: red;
+}
 
-  /* TODO: Step 4A1: Make a generic sidebar */
-  /* Styling for an info pane that slides out from the left. 
-   * Hidden by default. */
-  #panel {
-    height: 100%;
-    width: null;
-    background-color: white;
-    position: fixed;
-    z-index: 1;
-    overflow-x: hidden;
-    transition: all .2s ease-out;
-  }
 
-  .open {
-    width: 250px;
-  }
+.accordion {
+ text-align: left;
+  color: black;
+  
+}
+h2 {
+    color: yellow;
 
-  /* Styling for place details */
-  .hero {
-    width: 100%;
-    height: auto;
-    max-height: 166px;
-    display: block;
-  }
+}
 
-  .place,
-  p {
-    font-family: 'open sans', arial, sans-serif;
-    padding-left: 18px;
-    padding-right: 18px;
-  }
+h1 {
+    color: black;
+}
 
-  .details {
-    color: darkslategrey;
-  }
+.btn.btn-dark {
+  background-color: blueviolet;
+}
+.btn.btn-secondary {
+  background-color: cornflowerblue;
+}
+.btn.btn-info {
+  background-color: crimson;
+}
+.btn.btn-primary {
+  background-color: darkgoldenrod;
+}
 
-  a {
-    text-decoration: none;
-    color: cadetblue;
-  }
 
-  #map {
-    height: 400px;  /* The height is 400 pixels */
-    width: 100%;  /* The width is the width of the web page */
-   }
+#map {
+  height: 100%;
+  background-color: grey;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* TODO: Step 4A1: Make a generic sidebar */
+/* Styling for an info pane that slides out from the left. 
+ * Hidden by default. */
+#panel {
+  height: 100%;
+  width: null;
+  background-color: white;
+  position: fixed;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: all .2s ease-out;
+}
+
+.open {
+  width: 250px;
+}
+
+/* Styling for place details */
+.hero {
+  width: 100%;
+  height: auto;
+  max-height: 166px;
+  display: block;
+}
+
+.place,
+p {
+  font-family: 'open sans', arial, sans-serif;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.details {
+  color: darkslategrey;
+}
+
+a {
+  text-decoration: none;
+  color: cadetblue;
+}
+
+#map {
+  height: 400px;  /* The height is 400 pixels */
+  width: 100%;  /* The width is the width of the web page */
+ }

@@ -61,6 +61,10 @@
       text-decoration: none;
       color: cadetblue;
     }
+
+    .navLink {
+      float: right;
+    }
   </style>
 </head>
 
@@ -68,13 +72,22 @@
   <!-- The slide-out panel for showing place details -->
   <div id="panel"></div>
 
+  <div class="navLink">
+
+    <a class="goBack" href="index.html">Back To Event Search</a>
+  </div>
   <!-- Map appears here -->
   <div id="map"></div>
 
   <script>
-    /* Note: This example requires that you consent to location sharing when
-     * prompted by your browser. If you see the error "Geolocation permission
-     * denied.", it means you probably did not give permission for the browser * to locate you. */
+
+    var goBackBtn = document.getElementsByClassName("goBack")
+    console.log(goBackBtn)
+    // goBackBtn.addEventListener("click", function(){
+    //   window.location.href="index.html"
+
+    // })
+
     let pos;
     let map;
     let bounds;
@@ -82,11 +95,11 @@
     let currentInfoWindow;
     let service;
     let infoPane;
-    var path=window.location.search;
+    var path = window.location.search;
     console.log(path)
-     
-      path=path.split("?")
-      path=path[1].split("&")
+
+    path = path.split("?")
+    path = path[1].split("&")
 
 
 
@@ -96,57 +109,46 @@
       bounds = new google.maps.LatLngBounds();
       infoWindow = new google.maps.InfoWindow;
       currentInfoWindow = infoWindow;
-      /* TODO: Step 4A3: Add a generic sidebar */
       infoPane = document.getElementById('panel');
 
-      // Try HTML5 geolocation
+
       if (navigator.geolocation) {
-      //   navigator.geolocation.getCurrentPosition(position => {
-      //     pos = {
-      //       lat: position.coords.latitude,
-      //       lng: position.coords.longitude
-      //     };
-      //     map = new google.maps.Map(document.getElementById('map'), {
-      //       center: pos,
-      //       zoom: 15
-      //     });
-      //     bounds.extend(pos);
 
-      //     infoWindow.setPosition(pos);
-      //     infoWindow.setContent('Location found.');
-      //     infoWindow.open(map);
-      //     map.setCenter(pos);
-
-      //     // Call Places Nearby Search on user's location
-      //     getNearbyPlaces(pos);
-      //   }, () => {
-      //     // Browser supports geolocation, but user has denied permission
-      //     handleLocationError(true, infoWindow);
-      //   });
-      // } else {
-      //   // Browser doesn't support geolocation
         handleLocationError(false, infoWindow);
       }
     }
 
-    // Handle a geolocation error
+
     function handleLocationError(browserHasGeolocation, infoWindow) {
-      // Set default location to Sydney, Australia
-      latval= path[1].split("=");
-      latval= parseFloat(latval[1]);
+
+      latval = path[1].split("=");
+      latval = parseFloat(latval[1]);
       console.log(latval)
-      lngval= path[0].split("=");
-      lngval= parseFloat(lngval[1]);
-      // pos = { lat: 41.8781, lng: -87.6298 };
-      pos={ lat:latval, lng:lngval};
+      lngval = path[0].split("=");
+      lngval = parseFloat(lngval[1]);
+
+      pos = { lat: latval, lng: lngval };
       console.log(pos);
       map = new google.maps.Map(document.getElementById('map'), {
         center: pos,
         zoom: 15
       });
 
+      function createVenueMarker() {
+        let marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          animation: google.maps.Animation.BOUNCE,
+          title: "Your Venue"
+
+        })
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
+      }
+
       // Display an InfoWindow at the map center
       infoWindow.setPosition(pos);
+      console.log(pos)
+      createVenueMarker();
       infoWindow.setContent(browserHasGeolocation ?
         'Geolocation permissions denied. Using default location.' :
         'This is your venue location!!!!!!');
@@ -162,7 +164,7 @@
       let request = {
         location: position,
         rankBy: google.maps.places.RankBy.DISTANCE,
-        keyword: 'restaurants'
+        keyword: 'bar'
       };
 
       service = new google.maps.places.PlacesService(map);
@@ -175,7 +177,6 @@
         createMarkers(results);
       }
     }
-
     // Set markers at the location of each place result
     function createMarkers(places) {
       places.forEach(place => {
@@ -185,14 +186,14 @@
           title: place.name
         });
 
-        /* TODO: Step 4B: Add click listeners to the markers */
+
         // Add click listener to each marker
         google.maps.event.addListener(marker, 'click', () => {
           let request = {
             placeId: place.place_id,
             fields: ['name', 'formatted_address', 'geometry', 'rating',
               'website', 'photos']
-              
+
           };
           console.log(place)
           console.log(request);
@@ -285,16 +286,17 @@
     }
   </script>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdhu40g6B7ADuUxEykvacOYo-4cQUe0VI&libraries=places&callback=initMap">
-  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdhu40g6B7ADuUxEykvacOYo-4cQUe0VI&libraries=places&callback=initMap">
+    </script>
 
-  
-    <!-- jQuery JS -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-    <!-- Code to the JavaScript File -->
- <script src="calendarfunction.js"></script>
+
+  <!-- jQuery JS -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <!-- Code to the JavaScript File -->
+  <script src="calendarfunction.js"></script>
 </body>
 
 </html>

@@ -42,38 +42,33 @@ function buildQueryURL() {
 
   console.log(searchDateString)
 
-  var newQueryUrl = queryURL + searchTerms + apikey + searchTerms + city + searchDateString
-
-
+  
+  
   var sports = document.getElementById("sportsCheck")
   var music = document.getElementById("musicCheck")
   var theater = document.getElementById("theaterCheck")
-
-
-
+  
+  
+  var category = " "
   if (sports.checked) {
-
-    newQueryUrl += "&keyword=sports"
+    
+    category = "&keyword=sports"
   } if (music.checked) {
-
-    newQueryUrl += "&keyword=music"
+    
+    category = "&keyword=music"
   } if (theater.checked) {
-
-    newQueryUrl += "&keyword=theater"
+    
+    category = "&keyword=theater"
   }
+  var newQueryUrl = queryURL + searchTerms + apikey + searchTerms + city + searchDateString + category
   console.log(newQueryUrl)
   return newQueryUrl;
-
+  
   console.log(newUrl)
-  // return queryURL + searchTerms + $.param(queryParams)
-
-
 
 }
-
+// Event Listener for the search button to run the AJAX call
 $(".searchButton").on("click", function () {
-
-
 
   var queryURL = buildQueryURL();
   $.ajax({
@@ -83,46 +78,42 @@ $(".searchButton").on("click", function () {
     dataType: "json",
     success: function (json) {
       console.log(json);
-      // console.log(json._embedded.events.length)
+      console.log(json._embedded)
+      
       var responseLength = json._embedded.events.length
 
       $('.accordion').html(
 
-        "<h2>" + "Check It Out: We found " + responseLength + " events for you this weekend!" + "</h2>" + "<hr>"
+        "<h2>" + "Check It Out: We found " + responseLength + " events for you this weekend!" + "</h2>" + 
+        "<button class='btn btn-danger>" + "Start Over"
 
       )
 
-
+      // For Loop to assign variables to JSON Response Building Blocks, render to page
 
       for (var i = 0; i < responseLength; i++) {
-
+        // JSON Element Building Blocks
         var eventName = json._embedded.events[i].name
-        // console.log(eventName)
         var eventImage = json._embedded.events[i].images[i].url
-        console.log(eventImage)
         var venueName = json._embedded.events[i]._embedded.venues[0].name
-        // console.log(venueName)
         var venueCity = json._embedded.events[i]._embedded.venues[0].city.name
         var venueState = json._embedded.events[i]._embedded.venues[0].state.stateCode
         var venueZip = json._embedded.events[i]._embedded.venues[0].postalCode
         var venueAddress = json._embedded.events[i]._embedded.venues[0].address.line1 + " " + venueCity + "," + " " + venueState + " " + venueZip
-        // console.log(venueAddress)
-
+        // Use moment to normalize time returned from JSON object (24H time --> 12 HR)
         var startTime = moment(json._embedded.events[i].dates.start.localTime, "HH:mm:ss").format("h:mm A")
-        console.log(startTime)
-
-      
-        // console.log(startTime)
+        // Use Moment to normalize event date returned from JSON object
         var eventDate = moment(json._embedded.events[i].dates.start.localDate).format("dddd, MMMM, Do, YYYY")
-        
-
+       // Lat and Long vars from JSON object
         var lng = json._embedded.events[i]._embedded.venues[0].location.longitude
         var lat = json._embedded.events[i]._embedded.venues[0].location.latitude
+
+        //Setting up arrays for the purposes of dynamically rendering accordian elements on page (should have used an object) 
 
         var foundationArray = ["collapseOne", "collapseTwo", "collapseThree", "collapseFour", "collapseFive"]
         var dataTarget = ["#collapseOne", "#collapseTwo", "#collapseThree", "#collapseFour", "#collapseFive"]
         var headingArray = ["headingOne", "headingTwo", "headingThree", "headingFour", "headingFive"]
-
+        // Dynamically generated content that displays the JSON response building blocks to the page
         $('.accordion').append(
           "<div class = 'card'>" +
           "<div class= 'card-header' id =" + headingArray[i] + ">" +
@@ -138,39 +129,14 @@ $(".searchButton").on("click", function () {
           "<img class='thumbnail' src=" + eventImage + ">" +
           "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
           "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
-          "<a href='map.html?lng="+lng+"&lat="+lat+"' class='button' id='eventSelect' data-lng =" + lng + " " + "data-lat=" + lat + "target=_blank>" + "I'm In" + "</a>" +
+          "<a href='map.html?lng="+lng+"&lat="+lat+"' class='button' id='eventSelect' data-lng =" + lng + " " + "data-lat=" + lat + "target='_blank'>" + "I'm In" + "</a>" +
           "</div>" +
           "</div>" +
           "</div>"
           
         )
       } 
-      
-      // $('#eventSelect').on('click',function(){
-      //   console.log(lng)
-      // })
-      
-      // End of For Loop
-
-      //   var lng0 = json._embedded.events[0]._embedded.venues[0].location.longitude
-      //   
-      //   var lng1 = json._embedded.events[1]._embedded.venues[0].location.longitude
-      //   var lat1 = json._embedded.events[1]._embedded.venues[0].location.latitude
-      //   var lng2 = json._embedded.events[2]._embedded.venues[0].location.longitude
-      //   var lat2 = json._embedded.events[2]._embedded.venues[0].location.latitude
-      //   var lng3 = json._embedded.events[3]._embedded.venues[0].location.longitude
-      //   var lat3 = json._embedded.events[3]._embedded.venues[0].location.latitude
-      //   var lng4 = json._embedded.events[4]._embedded.venues[0].location.longitude
-      //   var lat4 = json._embedded.events[4]._embedded.venues[0].location.latitude
-
-      // var lngArray = [lng0, lng1, lng2, lng3, lng4]
-      // var latArray = [lat0, lat1, lat2, lat3, lat4]
-      //   console.log(lngArray)
-      //   console.log(latArray)
-
-
-
-
+      //Event Listener for the dynamically generated button on each event to grab coords and open the map 
       $(".button").on("click", function () {
 
         var selectedVenueLng = $(this).attr("data-lng")
@@ -179,22 +145,9 @@ $(".searchButton").on("click", function () {
 
 
       })
-
-
-
-
-
-
-
-
-
-
-
-      // Parse the response.<
-      // Do other things.
     },
     error: function (xhr, status, err) {
-      // This time, we do not end up here!
+     
     }
   });
   event.preventDefault();
