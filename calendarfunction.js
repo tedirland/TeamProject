@@ -138,15 +138,19 @@ $(".searchButton").on("click", function () {
           "<img class='thumbnail' src=" + eventImage + ">" +
           "<h4>" + "When: " + eventDate + " " + "at" + " " + startTime +
           "<h5>" + "Where: " + venueName + " " + "||" + " " + "<i>" + venueAddress + " <br> " +
-          "<button class='button' id='eventSelect' data-lng =" + lng + " " + "data-lat=" + lat + ">" + "I'm In" +
+          "<a href='map.html?lng="+lng+"&lat="+lat+"' class='button' id='eventSelect' data-lng =" + lng + " " + "data-lat=" + lat + "target=_blank>" + "I'm In" + "</a>" +
           "</div>" +
           "</div>" +
           "</div>"
-
-
-
+          
         )
-      } // End of For Loop
+      } 
+      
+      // $('#eventSelect').on('click',function(){
+      //   console.log(lng)
+      // })
+      
+      // End of For Loop
 
       //   var lng0 = json._embedded.events[0]._embedded.venues[0].location.longitude
       //   
