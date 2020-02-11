@@ -68,6 +68,10 @@ function buildQueryURL() {
 
 }
 // Event Listener for the search button to run the AJAX call
+$(".reload").on("click", function(){
+  document.location.reload()
+})
+
 $(".searchButton").on("click", function () {
 
   var queryURL = buildQueryURL();
